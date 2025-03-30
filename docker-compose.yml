@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+
+  kafka:
+    image: bitnami/kafka:latest
+    ports:
+      - "9092:9092"
+#    hostname: localhost
+    environment:
+      KAFKA_LOG_RETENTION_HOURS: 3 # nor yet reboot with this parameter
+      KAFKA_ENABLE_KRAFT: yes
+      KAFKA_CFG_PROCESS_ROLES: broker,controller
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CFG_LISTENERS: 'PLAINTEXT://:9092,CONTROLLER://:9093'
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT'
+      KAFKA_CFG_ADVERTISED_LISTENERS: 'PLAINTEXT://localhost:9092'
+      KAFKA_BROKER_ID: 1
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      ALLOW_PLAINTEXT_LISTENER: yes
+      KAFKA_CFG_NODE_ID: 1
+#      KAFKA_KRAFT_CLUSTER_ID: ZSJucKzxTtGjE97lq_Vn7Q
+
+#  kafka-ui:
+#    image: provectuslabs/kafka-ui:latest
+#    ports:
+#      - "7070:8080"
+#    environment:
+#      KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS: localhost:9092
+#      KAFKA_CLUSTERS_0_NAME: kraft
+#      DYNAMIC_CONFIG_ENABLED: true
+
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: monitoring_system
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"

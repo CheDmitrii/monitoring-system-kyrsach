@@ -1,0 +1,40 @@
+server:
+  port: 8228
+#  servlet:
+#    context-path: /monitoring-system
+
+
+spring:
+  application.name: monitoring-service
+  jackson:
+    default-property-inclusion: NON_NULL
+  db:
+    schemas:
+      default-schema: system
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/monitoring_system?currentSchema=${spring.db.schemas.default-schema}
+    hikari:
+      auto-commit: true
+#  jpa:
+#    properties:
+#      hibernate:
+#        default_schema: ${spring.db.schemas.default-schema}
+  flyway:
+    schemas: ${spring.db.schemas.default-schema}
+#    url: jdbc:postgresql://localhost:5432/monitoring_system
+#    user: postgres
+#    password: postgres
+  kafka:
+    bootstrap-servers: localhost:9092
+    topics:
+      monitoring-topic: monitoring_topic
+#    consumer:
+#      group-id: monitoring
+#      enable-auto-commit: true
+#      isolation-level: read_committed
+
+logging:
+  level:
+    org.hibernate.SQL: TRACE

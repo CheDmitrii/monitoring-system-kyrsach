@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  application.name: simulation-service
+  jackson:
+    default-property-inclusion: NON_NULL
+  db:
+    schemas:
+      default-schema: system
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/monitoring_system?currentSchema=${spring.db.schemas.default-schema}
+  kafka:
+    bootstrap-servers: localhost:9092
+    topics:
+      monitoring-topic: monitoring_topic
+    producer:
+      client-id: simulation-client
