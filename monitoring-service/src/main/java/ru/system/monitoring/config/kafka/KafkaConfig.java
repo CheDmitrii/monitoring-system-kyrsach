@@ -31,8 +31,8 @@ public class KafkaConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String BOOTSTRAP_SERVERS_VALUE;
-    @Value("${spring.kafka.topics.monitoring-topic}")
-    private String MONITORING_TOPIC;
+    @Value("${spring.kafka.topics.journal-topic}")
+    private String JOURNAL_TOPIC_VALUE;
 
     @Bean(name = KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_CONFIG_BEAN_NAME)
     public KafkaStreamsConfiguration kStreamsConfiguration() {

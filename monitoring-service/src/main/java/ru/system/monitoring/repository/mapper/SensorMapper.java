@@ -2,7 +2,7 @@ package ru.system.monitoring.repository.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import ru.system.library.dto.SensorDTO;
+import ru.system.library.dto.common.SensorDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

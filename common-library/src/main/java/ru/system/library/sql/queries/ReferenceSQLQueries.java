@@ -1,4 +1,4 @@
-package ru.system.monitoring.repository.queries;
+package ru.system.library.sql.queries;
 
 import lombok.experimental.UtilityClass;
 

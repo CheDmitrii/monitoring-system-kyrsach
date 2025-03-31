@@ -8,10 +8,9 @@ CREATE TABLE sensor (
 
 
 CREATE TABLE journal (
-    id_sensor           UUID            NOT NULL UNIQUE references sensor(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    sensor_id           UUID            NOT NULL references sensor(id) ON UPDATE CASCADE ON DELETE CASCADE,
     value               REAL            NOT NULL,
-    time                TIMESTAMPTZ     NOT NULL,
-    PRIMARY KEY(id_sensor)
+    time                TIMESTAMPTZ     NOT NULL
 );
 
 
@@ -26,9 +25,8 @@ CREATE TABLE reference_value (
 
 
 CREATE TABLE history_reference (
-    id                  UUID            NOT NULL UNIQUE references reference_value(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    id                  UUID            NOT NULL references reference_value(id) ON UPDATE CASCADE ON DELETE CASCADE,
     old_value           REAL,
     new_value           REAL,
-    timestamp           TIMESTAMPTZ,
-    PRIMARY KEY(id)
+    timestamp           TIMESTAMPTZ
 );

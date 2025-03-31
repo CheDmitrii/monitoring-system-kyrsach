@@ -10,6 +10,7 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+import ru.system.library.dto.common.JournalEntityDTO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class KafkaConfig {
     private String BOOTSTRAP_SERVERS_VALUE;
 
     @Bean
-    public ProducerFactory<String, String> producerFactory() {
+    public ProducerFactory<String, JournalEntityDTO> producerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS_VALUE);
         props.put(ProducerConfig.CLIENT_ID_CONFIG, "simulation-service");
@@ -32,7 +33,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, String> kafkaTemplate() {
+    public KafkaTemplate<String, JournalEntityDTO> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

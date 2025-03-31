@@ -4,10 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import ru.system.library.dto.JournalEntityDTO;
-import ru.system.library.dto.PayloadTypeDTO;
+import ru.system.library.dto.common.JournalEntityDTO;
 import ru.system.monitoring.repository.mapper.JournalEntityRowMapper;
-import ru.system.monitoring.repository.queries.JournalSQLQueries;
+import ru.system.library.sql.queries.JournalSQLQueries;
 
 import java.util.Comparator;
 import java.util.List;
@@ -21,22 +20,20 @@ public class JournalRepository {
     private final JournalEntityRowMapper journalEntityRowMapper;
 
     public void writeJournal(JournalEntityDTO journalEntityDTO) {
-        PayloadTypeDTO payload = journalEntityDTO.getPayload();
         namedParameterJdbcTemplate.update(
                 JournalSQLQueries.WRITE_JOURNAL,
                 Map.of(
-                        "id_sensor", journalEntityDTO.getId(),
-                        "type", payload.getType(),
-                        "value", payload.getValue(),
+                        "sensor_id", journalEntityDTO.getId(),
+                        "value", journalEntityDTO.getValue(),
                         "time", journalEntityDTO.getTime()
                 )
         );
     }
 
-    public List<JournalEntityDTO> getAllJournals(UUID id_sensor) {
+    public List<JournalEntityDTO> getAllJournals(UUID sensor_id) {
         List<JournalEntityDTO> result = namedParameterJdbcTemplate.query(
                 JournalSQLQueries.GET_JOURNALS_BY_ID,
-                Map.of("id_sensor", id_sensor),
+                Map.of("sensor_id", sensor_id),
                 journalEntityRowMapper
         );
         result.sort(Comparator.comparing(JournalEntityDTO::getTime));

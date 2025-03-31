@@ -1,4 +1,4 @@
-package ru.system.library.dto;
+package ru.system.library.dto.common;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,9 +7,9 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class ReferenceDTO {
+public class ReferenceValueDTO {
     private UUID id;
-    private UUID sensor_id;
+    private UUID sensorId;
     private String name;
     private double value;
     private String type;

@@ -1,4 +1,4 @@
-package ru.system.library.dto;
+package ru.system.library.dto.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +14,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class JournalEntityDTO {
     private UUID id;
-    private PayloadTypeDTO payload;
+    private double value;
     private Timestamp time;
 }

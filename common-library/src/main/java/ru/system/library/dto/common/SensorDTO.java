@@ -1,4 +1,4 @@
-package ru.system.library.dto;
+package ru.system.library.dto.common;
 
 import lombok.Builder;
 import lombok.Data;

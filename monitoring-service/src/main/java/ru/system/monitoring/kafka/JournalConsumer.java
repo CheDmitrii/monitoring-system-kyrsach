@@ -14,16 +14,19 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerde;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import ru.system.library.dto.JournalEntityDTO;
+import ru.system.library.dto.common.JournalEntityDTO;
 import ru.system.monitoring.service.JournalService;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Configuration
 @Slf4j
 @RequiredArgsConstructor
-public class MonitoringConsumer {
+public class JournalConsumer {
 
-    @Value("${spring.kafka.topics.monitoring-topic}")
-    private String TOPIC_VALUE;
+    @Value("${spring.kafka.topics.journal-topic}")
+    private String JOURNAL_TOPIC_VALUE;
     private final JournalService journalService;
     private final SimpMessagingTemplate messagingTemplate;
     private final ObjectMapper objectMapper = new ObjectMapper(); // don't need
@@ -41,6 +44,7 @@ public class MonitoringConsumer {
                 )
         );
         stream.foreach((k, v) -> {
+            v.setTime(Timestamp.valueOf(LocalDateTime.now()));
             log.info("Consume journal {}", v);
             journalService.saveJournal(v);
             log.info("Save journal {}", v);

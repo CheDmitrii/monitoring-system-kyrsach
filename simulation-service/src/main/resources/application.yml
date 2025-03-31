@@ -14,6 +14,6 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     topics:
-      monitoring-topic: monitoring_topic
+      journal-topic: journal-topic
     producer:
       client-id: simulation-client

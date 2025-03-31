@@ -1,9 +1,11 @@
 package ru.system.monitoring.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ru.system.library.dto.JournalEntityDTO;
-import ru.system.library.dto.SensorDTO;
+import ru.system.library.dto.common.JournalEntityDTO;
+import ru.system.library.dto.common.SensorDTO;
+import ru.system.library.exception.HttpResponseEntityException;
 import ru.system.monitoring.repository.repository.SensorRepository;
 
 import java.util.List;
@@ -20,10 +22,10 @@ public class SensorService {
 
     public SensorDTO getSensorById(UUID id) {
         if (!sensorRepository.existsSensor(id)) {
-            // todo throw exception
+            throw new HttpResponseEntityException(HttpStatus.NOT_FOUND, "Sensor with this id {%s} doesn't exist".formatted(id));
         }
         SensorDTO sensorInfo = sensorRepository.getSensorInfo(id);
-        sensorInfo.setJournal(journalService.getSensorData(id));
+        sensorInfo.setJournal(journalService.getSensorJournal(id));
         return sensorInfo;
     }
 
@@ -32,15 +34,5 @@ public class SensorService {
         Map<UUID, List<JournalEntityDTO>> collectJournal = journalService.getAllSensorsData().stream().collect(Collectors.groupingBy(JournalEntityDTO::getId));
         allSensors.forEach(v -> v.setJournal(collectJournal.get(v.getId())));
         return allSensors;
-    }
-
-    public void saveSensor() {
-        sensorRepository.createSensor(SensorDTO
-                .builder()
-                .id(UUID.randomUUID())
-                .type("test")
-                .name("ssss")
-                .description("ddd")
-                .build());
     }
 }

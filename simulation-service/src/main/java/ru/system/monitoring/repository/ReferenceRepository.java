@@ -1,4 +1,4 @@
-package ru.system.monitoring.repository.repository;
+package ru.system.monitoring.repository;
 
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -15,20 +15,10 @@ public class ReferenceRepository extends ReferenceRepositoryInterface {
         super(namedParameterJdbcTemplate);
     }
 
-
-    public void changeValue(UUID id, double value) {
+    public void changeReference(UUID id, Double newValue) {
         namedParameterJdbcTemplate.update(
                 ReferenceSQLQueries.UPDATE_VALUE,
-                Map.of("id", id, "value", value));
+                Map.of("id", id, "value", newValue)
+        );
     }
-
-//    public boolean existsReference(UUID id) {
-//        return Boolean.TRUE.equals(
-//                namedParameterJdbcTemplate.queryForObject(
-//                        ReferenceSQLQueries.EXISTS_REFERENCE,
-//                        Map.of("id", id),
-//                        Boolean.class
-//                )
-//        );
-//    }
 }
