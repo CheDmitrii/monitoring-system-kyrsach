@@ -11,8 +11,7 @@ import javax.sql.DataSource;
 public class DataBaseConfig {
 
     // TODO: add if not exists in migration in both place
-    // TODO: implement sockets
-    // todo: in diplomas implement UPC server, switch on JPA and maybe use rsockets
+    // todo: in diplomas implement security, UPC server, switch on JPA and maybe use rsockets
     @Bean
     @ConditionalOnBean(DataSource.class)
     public NamedParameterJdbcTemplate getJDBCTemplate(DataSource dataSource) {

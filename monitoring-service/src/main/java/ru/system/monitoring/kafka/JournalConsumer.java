@@ -1,6 +1,5 @@
 package ru.system.monitoring.kafka;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.Serdes;
@@ -29,12 +28,11 @@ public class JournalConsumer {
     private String JOURNAL_TOPIC_VALUE;
     private final JournalService journalService;
     private final SimpMessagingTemplate messagingTemplate;
-    private final ObjectMapper objectMapper = new ObjectMapper(); // don't need
 
     @Bean
     public KStream<String, JournalEntityDTO> monitoringStream(StreamsBuilder builder) {
         KStream<String, JournalEntityDTO> stream = builder.stream(
-                "test2",
+                JOURNAL_TOPIC_VALUE,
                 Consumed.with(
                         Serdes.String(),
                         new JsonSerde<>(
@@ -46,6 +44,10 @@ public class JournalConsumer {
         stream.foreach((k, v) -> {
             v.setTime(Timestamp.valueOf(LocalDateTime.now()));
             log.info("Consume journal {}", v);
+            if (!journalService.isSensorExist(v.getId())) {
+                log.error("Not found sensor with id {} :    value => {}, time => {}", v.getId(), v.getValue(), v.getTime());
+                return;
+            }
             journalService.saveJournal(v);
             log.info("Save journal {}", v);
             messagingTemplate.convertAndSend("/topic/journal", v);

@@ -14,11 +14,15 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class JournalService {
     private final JournalRepository journalRepository;
-    private final SensorRepository sensorRepository; // todo implement checking sensor
+    private final SensorRepository sensorRepository;
 
     @Async
     public void saveJournal(JournalEntityDTO journalEntityDTO) {
         journalRepository.writeJournal(journalEntityDTO);
+    }
+
+    public boolean isSensorExist(UUID id) {
+        return sensorRepository.existsSensor(id);
     }
 
 

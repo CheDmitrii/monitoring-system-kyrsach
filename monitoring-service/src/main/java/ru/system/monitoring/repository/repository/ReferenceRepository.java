@@ -21,14 +21,4 @@ public class ReferenceRepository extends ReferenceRepositoryInterface {
                 ReferenceSQLQueries.UPDATE_VALUE,
                 Map.of("id", id, "value", value));
     }
-
-//    public boolean existsReference(UUID id) {
-//        return Boolean.TRUE.equals(
-//                namedParameterJdbcTemplate.queryForObject(
-//                        ReferenceSQLQueries.EXISTS_REFERENCE,
-//                        Map.of("id", id),
-//                        Boolean.class
-//                )
-//        );
-//    }
 }

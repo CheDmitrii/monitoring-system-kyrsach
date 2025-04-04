@@ -2,10 +2,7 @@ package ru.system.monitoring.config.kafka;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.NewTopic;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.config.TopicConfig;
-import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.streams.StreamsConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,10 +12,6 @@ import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.kafka.annotation.KafkaStreamsDefaultConfiguration;
 import org.springframework.kafka.config.KafkaStreamsConfiguration;
 import org.springframework.kafka.config.TopicBuilder;
-import org.springframework.kafka.core.ConsumerFactory;
-import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
-import org.springframework.kafka.support.serializer.JsonDeserializer;
-import org.springframework.kafka.support.serializer.JsonSerde;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,13 +41,13 @@ public class KafkaConfig {
     @Bean
     public NewTopic retentionTopic1() {
         return TopicBuilder
-                .name("test2")
+                .name(JOURNAL_TOPIC_VALUE)
                 .config(TopicConfig.RETENTION_MS_CONFIG, "3600000")
                 .build();
     }
 
 
-//    // for default kafka implementation
+//  ------      for default kafka implementation       ------
 ////    @Bean
 ////    public Admin adminClient() {
 ////        Map<String, Object> props = new HashMap<>();
