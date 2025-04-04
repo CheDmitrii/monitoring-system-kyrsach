@@ -9,6 +9,7 @@
 <!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
+    <!-- here groupId tag don't need as ia same as parent. it can be removed like in monitoring-service and simulation-service -->
     <groupId>ru.system</groupId>
     <artifactId>common-library</artifactId>
     <version>${common-library.version}</version>
@@ -38,11 +39,6 @@
             <artifactId>spring-jdbc</artifactId>
         </dependency>
         <!--  todo think to switch on dependencyManager  -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>

@@ -28,5 +28,5 @@ CREATE TABLE history_reference (
         id                  UUID            NOT NULL references reference_value(id) ON UPDATE CASCADE ON DELETE CASCADE,
         old_value           REAL,
         new_value           REAL,
-        timestamp           TIMESTAMPTZ
+        time           TIMESTAMPTZ
 );

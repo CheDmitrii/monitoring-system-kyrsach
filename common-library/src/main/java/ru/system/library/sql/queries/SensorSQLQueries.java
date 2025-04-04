@@ -15,5 +15,5 @@ public class SensorSQLQueries {
             SELECT EXISTS(SELECT 1 FROM system.sensor WHERE id=:id);""";
     public final String CREATE_SENSOR = """
             INSERT INTO system.sensor VALUES(:name, :type, :description)
-            returning id""";
+            returning id;""";
 }

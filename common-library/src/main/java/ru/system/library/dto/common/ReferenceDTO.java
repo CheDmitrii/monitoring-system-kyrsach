@@ -3,6 +3,7 @@ package ru.system.library.dto.common;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -13,4 +14,5 @@ public class ReferenceDTO {
     private String name;
     private double value;
     private String type;
+    List<ReferenceHistoryEntityDTO> history;
 }

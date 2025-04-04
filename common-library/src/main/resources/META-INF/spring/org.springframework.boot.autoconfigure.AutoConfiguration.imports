@@ -1,2 +1,3 @@
 ru.system.library.config.db.DataBaseConfig
+ru.system.library.config.mapper.MapperConfig
 ru.system.library.exception.handler.GlobalExceptionHandler

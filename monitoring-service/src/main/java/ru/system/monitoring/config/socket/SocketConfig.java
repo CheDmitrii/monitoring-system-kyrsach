@@ -20,7 +20,7 @@ public class SocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
 //        registry.addEndpoint("/socket");
-        registry.addEndpoint("/socket").setAllowedOrigins("*").withSockJS(); // or pur instead * host where works your service (need with react, maybe need with other services)
+        registry.addEndpoint("/socket").setAllowedOrigins("http://localhost:3000").withSockJS(); // allowedOrigins for react front service
 //        WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);
     }
 }
