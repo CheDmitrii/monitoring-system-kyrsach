@@ -27,7 +27,14 @@ spring:
 #    user: postgres
 #    password: postgres
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: &kafka_servers
+      ? localhost:9092
+    streams:
+#      bootstrap-servers:
+#        << : *kafka_servers
+#        ? localhost:1111
+      application-id: monitoring-system
+      client-id: monitoring-system
     topics:
       journal-topic: journal-topic
 #    consumer:

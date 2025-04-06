@@ -8,7 +8,6 @@ public class JournalSQLQueries {
             INSERT INTO system.journal
             VALUES(:sensor_id, :value, :time);
             """;
-
     public final String GET_JOURNALS_BY_ID = """
             SELECT * FROM system.journal
             WHERE sensor_id=:sensor_id;

@@ -12,8 +12,13 @@ spring:
     password: postgres
     url: jdbc:postgresql://localhost:5432/monitoring_system?currentSchema=${spring.db.schemas.default-schema}
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: &kafka_servers
+      - localhost:9092
     topics:
       journal-topic: journal-topic
     producer:
       client-id: simulation-client
+      bootstrap-servers:
+        *kafka_servers
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
