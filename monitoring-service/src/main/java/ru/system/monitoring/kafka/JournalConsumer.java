@@ -16,9 +16,6 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import ru.system.library.dto.common.JournalEntityDTO;
 import ru.system.monitoring.service.JournalService;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-
 @Configuration
 @Slf4j
 @RequiredArgsConstructor
@@ -42,10 +39,9 @@ public class JournalConsumer {
                 )
         );
         stream.foreach((k, v) -> {
-            v.setTime(Timestamp.valueOf(LocalDateTime.now()));
             log.info("Consume journal {}", v);
             if (!journalService.isSensorExist(v.getId())) {
-                log.error("Not found sensor with id {} :    value => {}, time => {}", v.getId(), v.getValue(), v.getTime());
+                log.error("Sensor with id {} not found:    value => {}, time => {}", v.getId(), v.getValue(), v.getTime());
                 return;
             }
             journalService.saveJournal(v);

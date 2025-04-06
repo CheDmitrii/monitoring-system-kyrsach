@@ -1,5 +1,6 @@
 package ru.system.monitoring.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -26,7 +27,7 @@ public class ReferenceController {
     private final SimpMessagingTemplate messagingTemplate;
 
     @MessageMapping("/reference/update") // for this annotation doesn't work @RequestMapping (send on "/app" (from socket config) + "/reference/update")
-    public void changeReference(RequestUpdateReferenceDTO update) {
+    public void changeReference(@Valid RequestUpdateReferenceDTO update) {
         Timestamp time = Timestamp.valueOf(LocalDateTime.now());
         referenceService.saveChanges(update, time);
         messagingTemplate.convertAndSend("/topic/references", update);
@@ -39,7 +40,7 @@ public class ReferenceController {
     }
 
     @GetMapping("/history/{id:.+}")
-    public Mono<ReferenceDTO> getReferenceById(@PathVariable("id") UUID id) {
+    public Mono<ReferenceDTO> getReferenceById(@PathVariable("id") final UUID id) {
         return Mono.just(referenceService.getReference(id));
     }
 }

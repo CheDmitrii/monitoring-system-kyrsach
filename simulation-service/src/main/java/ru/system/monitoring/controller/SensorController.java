@@ -1,5 +1,6 @@
 package ru.system.monitoring.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class SensorController {
     private final SensorService sensorService;
 
     @PostMapping("/create")
-    public Mono<ResponseEntity<Map<String, UUID>>> createSensor(@RequestBody CreateSensorDTO sensor) {
+    public Mono<ResponseEntity<Map<String, UUID>>> createSensor(@RequestBody @Valid CreateSensorDTO sensor) {
         return Mono.just(ResponseEntity.ok(Map.of("id", sensorService.createSensor(sensor))));
     }
 }
