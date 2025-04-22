@@ -6,7 +6,7 @@ import lombok.experimental.UtilityClass;
 public class SensorSQLQueries {
     public final String GET_ALL_SENSORS = """
             SELECT *, r.value FROM system.sensor s
-            JOIN system.reference_value r ON s.id=r.sensor_id;""";
+            LEFT JOIN system.reference_value r ON s.id=r.sensor_id;"""; // ref may be null
     public final String GET_SENSOR_BY_ID = """
             SELECT *, r.value FROM system.sensor s
             JOIN system.reference_value r ON s.id=r.sensor_id

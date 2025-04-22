@@ -1,6 +1,5 @@
 package ru.system.library.dto.common;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,8 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JournalEntityDTO {
-    @NotNull
     private UUID id;
-    private double value;
+    private Double value;
     private Timestamp time;
 }

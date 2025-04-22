@@ -9,7 +9,7 @@ public class JournalSQLQueries {
             VALUES(:sensor_id, :value, :time);
             """;
     public final String GET_JOURNALS_BY_ID = """
-            SELECT * FROM system.journal
+            SELECT value, time FROM system.journal
             WHERE sensor_id=:sensor_id;
             """;
     public final String GET_ALL_JOURNALS = """
