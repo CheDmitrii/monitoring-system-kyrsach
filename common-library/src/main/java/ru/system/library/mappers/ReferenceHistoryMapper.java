@@ -5,16 +5,19 @@ import ru.system.library.dto.common.ReferenceHistoryEntityDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.TimeZone;
 import java.util.UUID;
 
 
 public class ReferenceHistoryMapper implements RowMapper<ReferenceHistoryEntityDTO> {
+    private final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+
     @Override
     public ReferenceHistoryEntityDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
         return ReferenceHistoryEntityDTO.builder()
                 .id(UUID.fromString(rs.getString("id")))
-                .time(Timestamp.valueOf(rs.getString("time")))
+                .time(rs.getTimestamp("time", calendar))
                 .oldValue(rs.getDouble("old_value"))
                 .newValue(rs.getDouble("new_value"))
                 .build();
