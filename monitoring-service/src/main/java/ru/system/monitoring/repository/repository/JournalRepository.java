@@ -5,8 +5,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import ru.system.library.dto.common.JournalEntityDTO;
-import ru.system.library.mappers.CutJournalEntityMapper;
-import ru.system.library.mappers.JournalEntityMapper;
+import ru.system.library.sql.repository.mapper.CutJournalEntityMapper;
+import ru.system.library.sql.repository.mapper.JournalEntityMapper;
 import ru.system.library.sql.queries.JournalSQLQueries;
 
 import java.util.Comparator;

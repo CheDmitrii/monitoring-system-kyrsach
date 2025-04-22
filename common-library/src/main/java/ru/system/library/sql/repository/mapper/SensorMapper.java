@@ -1,14 +1,12 @@
-package ru.system.monitoring.repository.mapper;
+package ru.system.library.sql.repository.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 import ru.system.library.dto.common.SensorDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-@Component
 public class SensorMapper implements RowMapper<SensorDTO> {
     @Override
     public SensorDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -17,6 +15,7 @@ public class SensorMapper implements RowMapper<SensorDTO> {
                 .name(rs.getString("name"))
                 .description(rs.getString("description"))
                 .referenceValue(rs.getDouble("value"))
+                .referenceName(rs.getString("reference_name"))
                 .type(rs.getString("type"))
                 .build();
     }

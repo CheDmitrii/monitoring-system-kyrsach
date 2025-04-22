@@ -1,4 +1,4 @@
-package ru.system.library.sql.repository;
+package ru.system.library.sql.repository.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

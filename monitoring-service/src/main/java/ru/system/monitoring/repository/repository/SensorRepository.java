@@ -3,8 +3,8 @@ package ru.system.monitoring.repository.repository;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.system.library.dto.common.SensorDTO;
-import ru.system.library.sql.repository.SensorRepositoryInterface;
-import ru.system.monitoring.repository.mapper.SensorMapper;
+import ru.system.library.sql.repository.repository.SensorRepositoryInterface;
+import ru.system.library.sql.repository.mapper.SensorMapper;
 import ru.system.library.sql.queries.SensorSQLQueries;
 
 import java.util.List;

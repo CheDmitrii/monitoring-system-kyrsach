@@ -12,7 +12,7 @@ public class ReferenceDTO {
     private UUID id;
     private UUID sensor_id;
     private String name;
-    private double value;
+    private Double value;
     private String type;
     List<ReferenceHistoryEntityDTO> history;
 }

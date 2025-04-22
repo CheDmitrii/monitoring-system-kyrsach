@@ -2,9 +2,7 @@ package ru.system.library.config.mapper;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.system.library.mappers.CutJournalEntityMapper;
-import ru.system.library.mappers.JournalEntityMapper;
-import ru.system.library.mappers.ReferenceHistoryMapper;
+import ru.system.library.sql.repository.mapper.*;
 
 @Configuration
 public class MapperConfig {
@@ -21,5 +19,15 @@ public class MapperConfig {
     @Bean
     public CutJournalEntityMapper journalEntityMapper() {
         return new CutJournalEntityMapper();
+    }
+
+    @Bean
+    public SensorMapper sensorMapper() {
+        return new SensorMapper();
+    }
+
+    @Bean
+    public ReferenceMapper referenceMapper() {
+        return new ReferenceMapper();
     }
 }

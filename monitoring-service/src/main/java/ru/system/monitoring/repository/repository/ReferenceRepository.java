@@ -5,10 +5,10 @@ import org.springframework.stereotype.Component;
 import ru.system.library.dto.common.ReferenceDTO;
 import ru.system.library.dto.common.ReferenceHistoryEntityDTO;
 import ru.system.library.sql.queries.ReferenceSQLQueries;
-import ru.system.library.sql.repository.ReferenceRepositoryInterface;
+import ru.system.library.sql.repository.repository.ReferenceRepositoryInterface;
 import ru.system.monitoring.dto.RequestUpdateReferenceDTO;
-import ru.system.library.mappers.ReferenceHistoryMapper;
-import ru.system.monitoring.repository.mapper.ReferenceMapper;
+import ru.system.library.sql.repository.mapper.ReferenceHistoryMapper;
+import ru.system.library.sql.repository.mapper.ReferenceMapper;
 
 import java.sql.Timestamp;
 import java.util.List;

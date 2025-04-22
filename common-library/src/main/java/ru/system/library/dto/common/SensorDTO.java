@@ -14,5 +14,6 @@ public class SensorDTO {
     private String description;
     private String type;
     private Double referenceValue;
+    private String referenceName;
     private List<JournalEntityDTO> journal;
 }

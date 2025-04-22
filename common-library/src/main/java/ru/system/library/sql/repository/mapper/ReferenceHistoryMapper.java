@@ -1,4 +1,4 @@
-package ru.system.library.mappers;
+package ru.system.library.sql.repository.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
 import ru.system.library.dto.common.ReferenceHistoryEntityDTO;

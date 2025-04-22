@@ -4,7 +4,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.system.library.dto.common.SensorDTO;
 import ru.system.library.sql.queries.SensorSQLQueries;
-import ru.system.library.sql.repository.SensorRepositoryInterface;
+import ru.system.library.sql.repository.repository.SensorRepositoryInterface;
 
 import java.util.Map;
 import java.util.UUID;

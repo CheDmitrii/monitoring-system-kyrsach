@@ -1,14 +1,12 @@
-package ru.system.monitoring.repository.mapper;
+package ru.system.library.sql.repository.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 import ru.system.library.dto.common.ReferenceDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-@Component
 public class ReferenceMapper implements RowMapper<ReferenceDTO> {
     @Override
     public ReferenceDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
