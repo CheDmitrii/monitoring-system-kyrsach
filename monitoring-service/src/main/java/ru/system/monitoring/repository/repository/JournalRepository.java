@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import ru.system.library.dto.common.JournalEntityDTO;
-import ru.system.library.sql.repository.mapper.CutJournalEntityMapper;
+import ru.system.library.sql.repository.mapper.JournalEntityMapperCut;
 import ru.system.library.sql.repository.mapper.JournalEntityMapper;
 import ru.system.library.sql.queries.JournalSQLQueries;
 
@@ -19,7 +19,7 @@ import java.util.UUID;
 public class JournalRepository {
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private final JournalEntityMapper journalEntityMapper;
-    private final CutJournalEntityMapper cutJournalEntityMapper;
+    private final JournalEntityMapperCut journalEntityMapperCut;
 
     public void writeJournal(JournalEntityDTO journalEntityDTO) {
         namedParameterJdbcTemplate.update(
@@ -36,7 +36,7 @@ public class JournalRepository {
         List<JournalEntityDTO> result = namedParameterJdbcTemplate.query(
                 JournalSQLQueries.GET_JOURNALS_BY_ID,
                 Map.of("sensor_id", sensor_id),
-                cutJournalEntityMapper
+                journalEntityMapperCut
         );
         result.sort(Comparator.comparing(JournalEntityDTO::getTime));
         return result;

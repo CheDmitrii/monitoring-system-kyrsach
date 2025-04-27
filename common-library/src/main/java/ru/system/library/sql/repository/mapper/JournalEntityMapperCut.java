@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class CutJournalEntityMapper implements RowMapper<JournalEntityDTO> {
+public class JournalEntityMapperCut implements RowMapper<JournalEntityDTO> {
 
     private final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 

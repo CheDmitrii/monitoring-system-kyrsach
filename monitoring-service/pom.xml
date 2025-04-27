@@ -10,6 +10,7 @@
 <!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
+    <groupId>ru.system</groupId>
     <artifactId>monitoring-service</artifactId>
     <version>${parent.version}</version>
     <name>monitoring-service</name>

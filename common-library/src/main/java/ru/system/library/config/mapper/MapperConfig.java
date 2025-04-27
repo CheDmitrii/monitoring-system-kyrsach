@@ -17,8 +17,8 @@ public class MapperConfig {
     }
 
     @Bean
-    public CutJournalEntityMapper journalEntityMapper() {
-        return new CutJournalEntityMapper();
+    public JournalEntityMapperCut journalEntityMapper() {
+        return new JournalEntityMapperCut();
     }
 
     @Bean

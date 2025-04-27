@@ -5,10 +5,10 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class SensorSQLQueries {
     public final String GET_ALL_SENSORS = """
-            SELECT *, r.value, r.name as reference_name FROM system.sensor s
+            SELECT *, r.id as reference_id, r.value, r.name as reference_name FROM system.sensor s
             LEFT JOIN system.reference_value r ON s.id=r.sensor_id;"""; // ref may be null
     public final String GET_SENSOR_BY_ID = """
-            SELECT *, r.value, r.name as reference_name FROM system.sensor s
+            SELECT *, r.id as reference_id, r.value, r.name as reference_name FROM system.sensor s
             LEFT JOIN system.reference_value r ON s.id=r.sensor_id
             WHERE s.id=:id;""";
     public final String EXIST_SENSOR = """

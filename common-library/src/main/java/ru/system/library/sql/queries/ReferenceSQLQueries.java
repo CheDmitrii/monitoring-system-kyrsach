@@ -4,6 +4,10 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class ReferenceSQLQueries {
+    public final String CREATE_REFERENCE = """
+            INSERT INTO system.reference_value
+            VALUES(:sensor_id, :name, :value, :type);
+            returning id;""";
     public final String CREATE_REFERENCE_HISTORY = """
             INSERT INTO system.history_reference VALUES(:id, :old_value, :new_value, :time);""";
     public final String GET_REFERENCE_BY_ID = """

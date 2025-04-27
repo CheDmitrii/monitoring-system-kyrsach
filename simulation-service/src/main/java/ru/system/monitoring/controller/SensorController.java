@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-import ru.system.library.dto.request.CreateSensorDTO;
+import ru.system.library.dto.common.SensorDTO;
 import ru.system.monitoring.service.SensorService;
 
 import java.util.Map;
@@ -21,7 +21,7 @@ public class SensorController {
     private final SensorService sensorService;
 
     @PostMapping("/create")
-    public Mono<ResponseEntity<Map<String, UUID>>> createSensor(@RequestBody @Valid CreateSensorDTO sensor) {
+    public Mono<ResponseEntity<Map<String, UUID>>> createSensor(@RequestBody @Valid SensorDTO sensor) {
         return Mono.just(ResponseEntity.ok(Map.of("id", sensorService.createSensor(sensor))));
     }
 }
