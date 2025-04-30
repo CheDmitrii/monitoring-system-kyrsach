@@ -13,7 +13,8 @@ public class ReferenceSQLQueries {
     public final String GET_REFERENCE_BY_ID = """
             SELECT * FROM system.reference_value WHERE id=:id;""";
     public final String GET_ALL_REFERENCES = """
-            SELECT * FROM system.reference_value""";
+            SELECT * FROM system.reference_value
+            ORDER BY name""";
     public final String GET_REFERENCE_HISTORY_BY_ID = """
             SELECT * FROM system.history_reference WHERE id=:id;""";
     public final String GET_ALL_REFERENCE_HISTORY = """
