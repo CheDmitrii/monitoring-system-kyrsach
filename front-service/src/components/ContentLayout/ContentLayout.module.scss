@@ -1,0 +1,24 @@
+$second-color: #eee;
+$main-color: #171717;
+
+.ContentLayout {
+    display: flex;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+[data-theme="light"] {
+    .ContentLayout {
+        background-color: $second-color;
+    }
+  }
+
+[data-theme="dark"] {
+    .ContentLayout {
+        background-color: $main-color;
+    }
+}

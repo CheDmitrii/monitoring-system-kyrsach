@@ -1,0 +1,50 @@
+$main-color:#171717;
+$second-color: #eeeeee;
+$button-color: #d4d4d4;
+
+.TopBar {
+    position: relative;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    box-sizing: border-box;
+
+    span {
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
+
+.Button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 80%;
+    text-align: center;
+    border-radius: 4px;
+}
+
+[data-theme="light"] {
+    .TopBar {
+        color: black;
+        background-color: $second-color;
+    }
+  }
+
+[data-theme="dark"] {
+    .TopBar {
+        color: white;
+        background-color: $main-color;
+    }
+}
+
+.Icon {
+    width: 40px;
+    height: 40px;
+    color: $button-color;
+}

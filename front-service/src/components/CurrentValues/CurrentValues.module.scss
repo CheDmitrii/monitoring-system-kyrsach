@@ -1,0 +1,63 @@
+$second-color: #ddd;
+$main-color: #2A2929;
+
+.CurrentValuesForm {
+    min-width: 500px;
+    h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 22px;
+        font-weight: 600;
+    }
+    span {
+        font-size: 16px;
+    }
+}
+
+[data-theme="light"] {
+    h1 {
+        color: black;
+    }
+
+    span {
+        color: black;
+    }
+
+    .Wrapper {
+        background-color: $second-color;
+    }
+  }
+
+[data-theme="dark"] {
+    h1 {
+        color: white;
+    }
+
+    span {
+        color: white;
+    }
+
+    .Wrapper {
+        background-color: $main-color;
+    }
+}
+
+.Wrapper {
+    display: flex;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.Container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.RefContainer {
+    display: flex;
+    align-items: center;
+}

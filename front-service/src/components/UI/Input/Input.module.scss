@@ -1,0 +1,29 @@
+$second-color: #eee;
+$main-color: #171717;
+
+.Input {
+    border-radius: 4px;
+    border: none;
+    padding: 7px;
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+[data-theme="light"] {
+    .Input {
+        color: black;
+        background-color: $second-color;
+    }
+  }
+
+[data-theme="dark"] {
+    .Input {
+        color: white;
+        background-color: $main-color;
+    }
+}
+
+.Input:hover {
+    filter: brightness(1.5);
+}

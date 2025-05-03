@@ -1,0 +1,39 @@
+.Button {
+    background-color: #171717;
+    border-radius: 30px;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    border: none;
+    max-width: 300px;
+    padding: 10px 5px;
+    height: 50px;
+    z-index: 1;
+    font-family: 'Montserrat';
+    cursor: pointer;
+    transition: filter ease-in .3 ;
+    min-width: 100px;
+}
+
+.Button div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.Button img {
+    width: 24px;
+    height: 24px;
+}
+
+.Button:hover {
+    filter: brightness(1.2);
+}
+
+@media (max-width: 576px) {
+    .Button {
+        font-size: 12px;
+        padding: 10px 20px;
+    }
+}

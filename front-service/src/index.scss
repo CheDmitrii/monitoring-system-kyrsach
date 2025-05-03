@@ -1,0 +1,26 @@
+$main-color: black;
+$second-color: white;
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+    background-color: $second-color;
+}
+
+[data-theme="light"] {
+    body {
+        background-color: $second-color;
+    }
+  }
+
+[data-theme="dark"] {
+    body {
+        background-color: $main-color;
+    }
+}
+
+#root {
+    height: 100vh;
+}

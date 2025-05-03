@@ -1,0 +1,15 @@
+.App {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.RightContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 7px;
+    gap: 7px;
+}
