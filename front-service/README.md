@@ -44,3 +44,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+### Also you can use 
+### `yarn install` 
+### command id project folder and then execute 
+### `yarn start` or `npm start` command 
+### (last one can add ass service in service window in itelliJ IDEA)
